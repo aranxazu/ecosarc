@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Inicio</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            }
+        #imagen-container {
+            text-align: center;
+            animation: aparecer 3s ease-in-out; /* nombre de la animación, duración y easing */
+            opacity: 0; /* inicia la imagen con transparencia */
+        }
+        #imagen-principal {
+            max-width: 100%;
+            max-height: 80vh; 
+        }
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.5); 
+            }
+            to {
+                opacity: 1;
+                transform: scale(1); 
+            }
+        }
+    </style>
+    <meta http-equiv="refresh" content="3; URL=/fondos-mutuos">
+</head>
+<body>
+    <div id="imagen-container">
+        <img id="imagen-principal" src="{{ url_for('static', filename='img/fondos mutuos.png') }}" alt="Página de Inicio">
+    </div>
+</body>
+</html>
+   
+
+
+
