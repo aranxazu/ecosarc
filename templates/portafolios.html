@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form id="myForm" method="post">
+    <h1>Portafolio FFMM</h1>
+    <table class="form-table">
+        <tr>
+            <td>
+                <label for="datepicker">Seleccionar Fecha:</label>
+            </td>
+            <td>
+                <input type="text" id="datepicker" name="datepicker" value="{{ fecha_actual}}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="tipos">Seleccionar cartera:</label>
+            </td>
+            <td>
+                <select id="tipos" name="tipos">
+                    {% for tipo in tipos %}
+                        <option value="{{ tipo }}">{{ tipo }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="fondos">Seleccionar fondo:</label>
+            </td>
+            <td>
+                <select id="fondos" name="fondos">
+                    {% for fondo in fondos %}
+                        <option value="{{ fondo }}">{{ fondo }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <button class="boton" onclick="submitForm2()">Consultar</button>
+        </tr>
+    </table>
+
+    <br>
+    <div class="contenedor">
+    {{ html|safe }}
+    </div>
+</form>
+<script>
+    function submitForm2() {
+        var form = document.getElementById('myForm');
+        form.action = '/portafolios';
+        form.submit();
+    }
+
+    function submitForm() {
+        var form = document.getElementById('myForm');
+        form.action = '/detalle-fondo';
+        form.submit();
+    }
+    $(document).ready(function() {
+        $("#datepicker").datepicker({
+            altFormat: 'yy-mm-dd',
+            defaultDate: new Date('{{ fecha_actual }}')
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form id="myForm" method="post">
+        <h1>Rentabilidad FFMM</h1>
+        <div class="form-container">
+            <div class="form-row">
+                <div>
+                    <label for="datepicker">Seleccionar Fecha:</label>
+                    <input type="text" id="datepicker" name="datepicker" value="{{ fecha_actual}}">
+                    <button class="boton" onclick="submitForm2()">Consultar</button>
+                </div>
+            </div>
+            <div class="contenedor">
+            {{ html|safe }}
+            <div>
+        </div>
+    </form>
+
+    <script>
+        function submitForm(run) {
+            // Puedes hacer algo con el valor de run, por ejemplo, imprimirlo
+            console.log('Valor de run:', run);
+    
+            // Ahora puedes usar el valor de run en tu lógica, por ejemplo, cambiar la acción del formulario
+            var form = document.getElementById('myForm');
+            form.action = '/detalle-fondo/' + run;
+            form.submit();
+        }
+
+        function submitForm2() {
+            var form = document.getElementById('myForm');
+            form.action = '/rentabilidades';
+            form.submit();
+        }
+
+        $(document).ready(function() {
+            $("#datepicker").datepicker({
+                altFormat: 'yy-mm-dd', // Formato alternativo de visualización (puede ajustarse según tus necesidades)
+                defaultDate: new Date('{{ fecha_actual }}') // Utiliza la fecha por defecto proporcionada por Flask
+            });
+        });
+
+    </script>
+{% endblock %}

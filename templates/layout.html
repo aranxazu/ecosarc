@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>App Fondos Mutuos</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a class="asidebar" href="{{ url_for('fondos_mutuos') }}">Sobre FFMM</a>
+                </li>
+                <li>
+                    <a class="asidebar" href="{{ url_for('rentabilidades') }}">Rentabilidades FFMM</a>
+                </li>
+                <li>
+                    <a class="asidebar" href="{{ url_for('portafolios') }}">Portafolio FFMM</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

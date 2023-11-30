@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>Detalle Fondos</h1>
+    <form id="myForm" method="post">
+        <div class="contenedor">
+            <h1>Detalle del fondo</h1>
+            {{ table_data|safe }}
+            <br>
+            <h1>Series</h1>
+            {{ table_series|safe }}
+        </div>
+    </form>
+        <script>
+            function submitForm() {
+                var form = document.getElementById('myForm');
+                form.action = '/portafolios';
+                form.submit();
+            }
+        </script>
+{% endblock %}
