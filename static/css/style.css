@@ -3,11 +3,21 @@
 */
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #f4f4f4;
+    background-image: url('/static/img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
     color: #333;
+    overflow-x: hidden;
+
+}
+
+body.no-background {
+    background-image: none !important;
 }
 
 p {
@@ -53,15 +63,16 @@ a:focus {
     display: flex;
     width: 100%;
     align-items: stretch;
+    
 }
 
 #sidebar {
-    min-width: 250px;
+    min-width: 180px;
     max-width: 250px;
     background: #394867;
     color: #fff;
     transition: all 0.3s;
-    height: 100vh;
+    height: 200vh;
 }
 
 #sidebar.active {
@@ -69,12 +80,12 @@ a:focus {
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: #29354E;
+    padding: 5px;
+    background: #fff;
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    padding: 0px 0;
     border-bottom: 1px solid #475877;
 }
 
@@ -144,16 +155,18 @@ a.article:hover {
 /* CONTENT STYLE */
 #content {
     width: calc(100% - 15px);
-    padding: 20px;
+    padding: 1px;
     min-height: 100vh;
     transition: all 0.3s;
-    margin-left: 15px;
-    background: #fff;
+    margin-left: 5px;
 }
 
 /* Encabezados */
-h1, h2 {
+h1, h2, h3 {
+    font-family: 'League Gothic', sans-serif;
     color: #29354E;
+    font-size: 60px;
+    letter-spacing: 6px;
 }
 
 /* MEDIAQUERIES */
@@ -181,25 +194,36 @@ h1, h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    border:none;
+    position: relative;
+    table-layout: auto;
+    
 }
 
 table, th, td {
     border: 1px solid #ddd;
+    
 }
 
 th, td {
-    padding: 12px;
+    padding: 10px;
     text-align: left;
+    max-width: 300px;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: normal;
+    
 }
 
 th {
-    background-color: #394867;
+    background-color: rgb(21, 33, 100);
+    font-weight: 700;
+    text-transform: uppercase;
     color: #fff;
 }
 
 tr:hover {
-    background-color: #f5f5f5;
+    background-color: rgb(207, 236, 239)
 }
 
 /* Estilos para Tablas Responsivas en Pantallas Pequeñas */
@@ -212,6 +236,8 @@ tr:hover {
 
     th, td {
         white-space: nowrap;
+        max-width: none; /* Eliminar el ancho máximo en pantallas pequeñas */
+        padding: 5px; /* Reducir el padding para dispositivos más pequeños */
     }
 }
 
@@ -223,11 +249,12 @@ tr:hover {
     font-size: 16px;
     cursor: pointer;
     font-size: 12px;
+
 }
 
 /* Estilo adicional para el datepicker */
 .ui-datepicker {
-    font-size: 10px;
+    font-size: 14px;
     background-color: #fff;
     border: 1px solid #ddd;
     opacity: 1;
@@ -240,6 +267,7 @@ tr:hover {
 
 .ui-datepicker-title {
     font-size: 20px;
+     font-family: 'Poppins', sans-serif;
 }
 
 /* Contenedor flex para el header del datepicker */
@@ -282,7 +310,7 @@ tr:hover {
 
 /* Estilo adicional para los botones "prev" y "next" al pasar el ratón sobre ellos */
 .ui-datepicker-prev:hover, .ui-datepicker-next:hover {
-    background-color: #2980b9;
+    background-color: #143145;
 }
 
 /* Estilo para la fecha activa */
@@ -296,21 +324,24 @@ tr:hover {
 /* Botones */
 /* Estilo para el botón Obtener Rentabilidades */
 .boton {
-    background-color: #007BFF;
-    color: #fff;
-    height: 30px;
-    padding: 10px 20px;
-    font-size: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 10px 0;
+    background-color: royalblue;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        border-radius: 4px;
 }
 
 /* Cambio de color al pasar el ratón sobre el botón */
 .boton:hover {
     background-color: #0056b3;
+
 }
 
 /* Estilo para los enlaces */
@@ -321,10 +352,11 @@ tr:hover {
 }
 
 .contenedor {
-    width: 900px;
-    margin: 0 auto;
+    width: 85%;
+    margin: 1px;
     height: 400px;
-    overflow-x: auto;
+    overflow-x: 5px;
+    overflow-y: auto;
 }
 
 .container {
@@ -371,4 +403,147 @@ label{
 
 .asidebar {
     color: #ddd;
+}
+
+/*ESTILO LOGO*/
+#fondos-mutuos {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen al contenedor */
+    display: block; /* La imagen se mostrará como un bloque para gestionar el flujo del contenido */
+    margin-left: auto; /* Margen izquierdo automático */
+    margin-right: auto; /* Margen derecho automático */
+}
+
+/*ESTILO SLIDE1*/
+#slide1 {
+    max-width: 50%; /* Ajusta el ancho máximo de la imagen al contenedor */
+    display: block; /* La imagen se mostrará como un bloque para gestionar el flujo del contenido */
+    margin: -15px auto; /* Margen superior e inferior de 20px, centrando la imagen horizontalmente */
+    
+}
+
+.header {
+    height: 100px; /* Altura deseada del encabezado */
+    color: white; /* Color del texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para el logo */
+.logo {
+    float: left; /* Coloca el logo hacia la izquierda */
+}
+
+.logo-img {
+    width: 100px; /* Ajusta el ancho de la imagen */
+    margin-right: 40px; /* Espacio entre el logo y el menú */
+    margin-left: 100px;
+}
+/*header*/
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alineación horizontal usando Flexbox */
+    text-align: right;
+    
+}
+
+.menu li {
+    margin-right: 20px; /* Espacio entre elementos del menú */
+}
+
+.menu li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.menu a {
+    color: rgb(21, 33, 100); /* Color predeterminado de los enlaces */
+    text-decoration: none;
+    transition: color 0.3s; 
+}
+
+.menu a:hover {
+    color: rgb(255, 255, 255);
+    background-color: #29354E;
+}
+/*Estilo imagenes inicio derecha*/
+.texto1 {
+    display: flex;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    justify-content: space-between; /* Espacio entre los elementos */
+}
+
+/* Estilos para el texto */
+.text {
+    flex: 1; /* El texto ocupa el espacio restante */
+    margin-right: 20px; /* Espacio entre el texto y la imagen */
+    max-width: 1000px;
+}
+
+/* Estilos para la imagen */
+.image-container img {
+    flex: none; /* La imagen no ocupa espacio adicional */
+    max-width: 700px; /* Ancho máximo permitido */
+    height: 500px;
+    margin-top: -250px;
+}
+
+/*Estilo imagenes inicio izquierda*/
+.texto2 {
+    display: flex;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    justify-content: space-between; /* Espacio entre los elementos */
+    flex-direction: row-reverse; 
+}
+
+/* Estilos para el texto */
+.text2 {
+    flex: 1; /* El texto ocupa el espacio restante */
+    margin-left: 20px; /* Espacio entre el texto y la imagen */
+    max-width: 1000px;
+}
+
+/* Estilos para la imagen */
+.image-container2 img {
+    flex: none; /* La imagen no ocupa espacio adicional */
+    max-width: 700px; /* Ancho máximo permitido */
+    height: 500px;
+    margin-top: -350px;
+}
+
+/*centrar elementos*/
+.center-elements{
+    text-align: center;
+}
+
+/*serie*/
+.serie{
+    width: 95%;
+    margin: 1px;
+    height: 400px;
+    overflow-x: 5px;
+    overflow-y: 1px;
+}
+
+/*detalle*/
+.detalle{
+    width: 96%;
+    margin: 1px;
+    height: 400px;
+    overflow-x: auto;
+    table-layout: auto;
+
+}
+
+.detalle th:nth-child(2), /* Cambia el número según la posición de la columna */
+.detalle td:nth-child(10) {
+    min-width: 100px; /* Establece un ancho mínimo para la columna de fechas */
 }
