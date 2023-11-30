@@ -1,13 +1,15 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <h1>Detalle Fondos</h1>
+    <h1 style="text-align: center;">INFORMACIÓN</h1>
     <form id="myForm" method="post">
-        <div class="contenedor">
-            <h1>Detalle del fondo</h1>
+        <div class="detalle" style="margin: 0 auto; width: 80%;">
+            <h1  style="text-align: center;">DETALLE DEL FONDO</h1>
             {{ table_data|safe }}
             <br>
-            <h1>Series</h1>
+        </div>
+        <div class="serie" style="margin: 0 auto; width: 80%;" >
+            <h1  style="text-align: center;">SERIES</h1>
             {{ table_series|safe }}
         </div>
     </form>

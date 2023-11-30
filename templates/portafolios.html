@@ -1,68 +1,52 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<form id="myForm" method="post">
-    <h1>Portafolio FFMM</h1>
-    <table class="form-table">
-        <tr>
-            <td>
-                <label for="datepicker">Seleccionar Fecha:</label>
-            </td>
-            <td>
-                <input type="text" id="datepicker" name="datepicker" value="{{ fecha_actual}}">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="tipos">Seleccionar cartera:</label>
-            </td>
-            <td>
-                <select id="tipos" name="tipos">
-                    {% for tipo in tipos %}
-                        <option value="{{ tipo }}">{{ tipo }}</option>
-                    {% endfor %}
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="fondos">Seleccionar fondo:</label>
-            </td>
-            <td>
-                <select id="fondos" name="fondos">
-                    {% for fondo in fondos %}
-                        <option value="{{ fondo }}">{{ fondo }}</option>
-                    {% endfor %}
-                </select>
-            </td>
-        </tr>
-        <tr>
+    <form id="myForm" method="post" style="text-align: center;">
+        <h1>PORTAFOLIO FONDOS MUTUOS</h1>
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label for="datepicker">Seleccionar Fecha:</label>
+            <input type="text" id="datepicker" name="datepicker" value="{{ fecha_actual }}">
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label for="tipos">Seleccionar cartera:</label>
+            <select id="tipos" name="tipos">
+                {% for tipo in tipos %}
+                    <option value="{{ tipo }}">{{ tipo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 10px;">
+            <label for="fondos">Seleccionar fondo:</label>
+            <select id="fondos" name="fondos">
+                {% for i in range(fondos|length) %}
+                <option value="{{ fondos[i] }}">{{ fondos[i] }} - {{ nombres[i] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group" style="margin-top: 10px;">
             <button class="boton" onclick="submitForm2()">Consultar</button>
-        </tr>
-    </table>
-
-    <br>
-    <div class="contenedor">
-    {{ html|safe }}
+        </div>
+    </form>
+    <div class="contenedor" style="margin: 20px auto; width: 80%;">
+        {{ html|safe }}
     </div>
-</form>
-<script>
-    function submitForm2() {
-        var form = document.getElementById('myForm');
-        form.action = '/portafolios';
-        form.submit();
-    }
+    <script>
+        function submitForm2() {
+            var form = document.getElementById('myForm');
+            form.action = '/portafolios';
+            form.submit();
+        }
 
-    function submitForm() {
-        var form = document.getElementById('myForm');
-        form.action = '/detalle-fondo';
-        form.submit();
-    }
-    $(document).ready(function() {
-        $("#datepicker").datepicker({
-            altFormat: 'yy-mm-dd',
-            defaultDate: new Date('{{ fecha_actual }}')
+        function submitForm() {
+            var form = document.getElementById('myForm');
+            form.action = '/detalle-fondo';
+            form.submit();
+        }
+        $(document).ready(function() {
+            $("#datepicker").datepicker({
+                altFormat: 'dd-mm-yyyy',
+                defaultDate: new Date('{{ fecha_actual }}')
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Fondos ECOSARC</title>
+    <link rel="stylesheet" href="styles.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask App</title>
@@ -15,25 +17,29 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
+    <header class="header">
+        <div class="header-content">
+            {% block header %}
+        <div class="logo">
+            <img src="/static/img/fondos mutuos.png" alt="Logo" class="logo-img">
+        </div>
+                <nav>
+                    <ul class="menu">
+                        <li><a href="{{ url_for('fondos_mutuos') }}">Sobre Fondos Mutuos</a></li>
+                        <li><a href="{{ url_for('rentabilidades') }}">Rentabilidades Fondos Mutuos</a></li>
+                        <li><a href="{{ url_for('portafolios') }}">Portafolio Fondos Mutuos</a></li>
+                        
+                    </ul>
+                </nav>
+            {% endblock %}
+        </div>
+    </header>
+       
+        </div>
+    </header>
     <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>App Fondos Mutuos</h3>
-            </div>
-            <ul class="list-unstyled components">
-                <li>
-                    <a class="asidebar" href="{{ url_for('fondos_mutuos') }}">Sobre FFMM</a>
-                </li>
-                <li>
-                    <a class="asidebar" href="{{ url_for('rentabilidades') }}">Rentabilidades FFMM</a>
-                </li>
-                <li>
-                    <a class="asidebar" href="{{ url_for('portafolios') }}">Portafolio FFMM</a>
-                </li>
-            </ul>
-        </nav>
+        
+    
         <div id="content">
             {% block content %}{% endblock %}
         </div>
